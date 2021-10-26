@@ -23,7 +23,7 @@ def main():
         def on_press(key):
             if key == Key.alt_gr:
                 print("[LOG]\talt_gr pressed.")
-                info("alt_g,")
+                info("alt_gr,")
 
             elif key == Key.alt_l:
                 print("[LOG]\talt_l pressed.")
