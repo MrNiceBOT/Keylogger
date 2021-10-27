@@ -8,3 +8,7 @@
 ## 26-10-2021
 * Added title bar: > title Keylogger.
 * Code optimization.
+
+## 27-10-2021
+* Added systeminfo logging.
+* Removed subprocess module.
