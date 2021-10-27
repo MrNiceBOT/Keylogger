@@ -265,7 +265,7 @@ try:
     from logging import DEBUG, basicConfig, info
 
     basicConfig(filename="log.txt", level=DEBUG, format="%(asctime)s: %(message)s")
-    
+
     print("[INFO]\tImporting remove from os.")
     from os import remove
 
