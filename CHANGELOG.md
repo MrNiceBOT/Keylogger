@@ -1,14 +1,14 @@
 # CHANGELOG
 
-## 25-10-2021
-* Added new key combination "Key.scroll_lock".
-* Added new key combination "Key.pause".
-* [ ] subprocess not working under pyinstaller.
+## 27-10-2021
+* Added systeminfo logging.
+* Removed subprocess module.
 
 ## 26-10-2021
 * Added title bar: > title Keylogger.
 * Code optimization.
 
-## 27-10-2021
-* Added systeminfo logging.
-* Removed subprocess module.
+## 25-10-2021
+* Added new key combination "Key.scroll_lock".
+* Added new key combination "Key.pause".
+* [ ] subprocess not working under pyinstaller.
