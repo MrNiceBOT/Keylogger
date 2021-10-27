@@ -263,12 +263,9 @@ try:
     from logging import DEBUG, basicConfig, info
 
     basicConfig(filename="log.txt", level=DEBUG, format="%(asctime)s: %(message)s")
-    
-    print("[INFO]\tImporting remove from os.")
-    from os import remove
 
-    print("[INFO]\tImporting system as terminal from os.")
-    from os import system as terminal
+    print("[INFO]\tImporting remove, system as terminal from os.")
+    from os import remove, system as terminal
 
     print("[INFO]\tImporting system as environment from platform.")
     from platform import system as environment
