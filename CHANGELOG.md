@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 28-10-2021
+* Automatic installation for required modules
+
 ## 27-10-2021
 * Added systeminfo logging.
 * Removed subprocess module.
