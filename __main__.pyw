@@ -1,4 +1,6 @@
 def main():
+    terminal("pip install pynput==1.7.4")
+
     try:
         # Importing third party library.
         print("[INFO]\tImporting Key, Listener from pynput.keyboard.")
