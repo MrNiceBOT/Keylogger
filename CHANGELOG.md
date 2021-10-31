@@ -4,6 +4,7 @@
 * Added public IP address for logging.
 * Removed unused sleep function from time module.
 * Code optimized.
+* [ ] K7UltimateSecurity Flags - Suspicious Program ID700026
 
 ## 28-10-2021
 * Automatic installation for required modules
