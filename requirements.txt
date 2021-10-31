@@ -1,7 +1,9 @@
-black==21.9b0		      #optional
-isort==5.9.3		      #optional
-pip==21.3.1         	#optional
-pyinstaller==4.5.1	  #optional
+#optional
+black==21.9b0
+isort==5.9.3
+pip==21.3.1
+pyinstaller==4.5.1
 
-pynput==1.7.4		      #mandatory
-requests==2.26.0      #mandatory
+#mandatory
+pynput==1.7.4
+requests==2.26.0
