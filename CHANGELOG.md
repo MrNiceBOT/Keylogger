@@ -3,6 +3,7 @@
 ## 04-11-2021
 * Check for module existence before installation.
 * Added new key combination (Key.cmd_r, Key.menu).
+* Added Boot time functionality.
 * Code optimized.
 
 ## 31-10-2021
