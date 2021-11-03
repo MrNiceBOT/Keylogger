@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 04-11-2021
+* Check for module existence before installation.
+* Code optimized.
+
 ## 31-10-2021
 * Added public IP address for logging.
 * Removed unused sleep function from time module.
