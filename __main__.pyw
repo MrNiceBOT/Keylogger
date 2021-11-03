@@ -104,6 +104,10 @@ def main():
                 print("[LOG]\tcmd pressed.")
                 info("cmd")
 
+            elif key == Key.cmd_r:
+                print("[LOG]\tcmd_r pressed")
+                info("cmd_r")
+
             elif key == Key.ctrl_l:
                 print("[LOG]\tctrl_l pressed.")
                 info("ctrl_l")
@@ -215,6 +219,10 @@ def main():
             elif key == Key.media_volume_up:
                 print("[LOG]\tmedia_volume_up pressed.")
                 info("media_volume_up")
+
+            elif key == Key.menu:
+                print("[LOG]\tmenu pressed.")
+                info("menu")
 
             elif key == Key.num_lock:
                 print("[LOG]\tnum_lock pressed.")
