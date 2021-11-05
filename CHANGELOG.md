@@ -1,5 +1,8 @@
 # CHANGELOG
 
+* Added del(Windows), rm(Linux) instead of os.remove() function.
+* Code optimized.
+
 ## 04-11-2021
 * Check for module existence before installation.
 * Added new key combination (Key.cmd_r, Key.menu).
