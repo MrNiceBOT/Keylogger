@@ -22,6 +22,7 @@ def main():
             break
 
     if not is_module_found:
+        print("[INFO]\tInstalling pynput v1.7.4")
         terminal("pip install pynput==1.7.4")
 
     try:
@@ -40,6 +41,7 @@ def main():
                     break
 
             if not is_module_found:
+                print("[INFO]\tInstalling requests v2.26.0")
                 terminal("pip install requests==2.26.0")
 
             try:
