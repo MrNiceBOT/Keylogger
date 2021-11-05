@@ -1,5 +1,6 @@
 # CHANGELOG
 
+## 05-11-2021
 * Added del(Windows), rm(Linux) instead of os.remove() function.
 * Code optimized.
 
