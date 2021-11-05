@@ -2,6 +2,7 @@
 
 ## 05-11-2021
 * Added del(Windows), rm(Linux) instead of os.remove() function.
+* Added email subject field.
 * Code optimized.
 
 ## 04-11-2021
